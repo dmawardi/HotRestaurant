@@ -62,7 +62,7 @@
         </div>
 
     </div>
-    <<<<<<< Updated upstream <script>
+    <script>
         $('#submitReservation').on('click', function(event) {
         event.preventDefault();
 
@@ -78,11 +78,13 @@
 
         $.post('/reservations', newReservation);
 
+        $('#nameInput').val('');
+        $('#phoneInput').val('');
+        $('#emailInput').val('');
+        $('#UIDInput').val('');
+
         });
         </script>
-        =======
-        <script></script>
-        >>>>>>> Stashed changes
 
 
 </body>

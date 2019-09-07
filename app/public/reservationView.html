@@ -94,22 +94,24 @@
                 phone.addClass('list-group-item');
                 email.addClass('list-group-item');
                 UID.addClass('list-group-item');
+<<<<<<< Updated upstream
 
+=======
+                
+                details.append(name);
+                details.append(phone);
+                details.append(email);
+                details.append(UID);
+>>>>>>> Stashed changes
 
+                card.append(cardHeader);
+                card.append(details);
+
+                $('#cardView').append(card);
 
             }
         });
     </script>
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">
-            Featured
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-    </div>
 
 
 </body>
