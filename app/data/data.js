@@ -1,2 +1,0 @@
-var waitList = [];
-var reservations = [];
