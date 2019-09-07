@@ -26,8 +26,8 @@
                     <h1 class="display-4">Hot Restaurant</h1>
                     <p class="lead">Book your seat before they're all gone!</p>
                     <hr class="my-4">
-                    <a class="btn btn-primary btn-lg" href="./index.html" role="button">Home</a>
-                    <a class="btn btn-danger btn-lg" href="./reservations.html" role="button">Make Reservation</a>
+                    <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
+                    <a class="btn btn-danger btn-lg" href="/reservations" role="button">Make Reservation</a>
 
                 </div>
 
@@ -41,25 +41,60 @@
                     <div class="card-header">
                         Current Reservations
                     </div>
-                    
+
                 </div>
 
             </div>
         </div>
         <!-- Waiting List -->
         <div class="row">
-                <div class="col-12">
-                    <div class="card" id="cardView">
-                        <div class="card-header">
-                            Waiting List
-                        </div>
-                        
+            <div class="col-12">
+                <div class="card" id="waitView">
+                    <div class="card-header">
+                        Waiting List
                     </div>
-    
+
                 </div>
+
             </div>
+        </div>
     </div>
 
+    <script>
+
+        var data = [{
+            "name": "James Rudd",
+            "email": "James.rudd@james.rudd",
+            "Phone": "1234-5678",
+            "uID": "abc123"
+        }];
+
+        $.get('/reservationView', function (data) {
+            for (let i = 0; i < data.length; i++) {
+                let card = $('<div>');
+                let cardHeader = $('<div>');
+                let details = $('<ul>');
+                let name = $('<li>');
+                let phone = $('<li>');
+                let email = $('<li>');
+                let UID = $('<li>');
+
+                name.text('Name: '+data.name);
+                card.addClass('card');
+
+            }
+        });
+    </script>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            Featured
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
 
 
 </body>
