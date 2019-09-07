@@ -68,22 +68,31 @@
 
         console.log('clicking submit');
 
-        var newReservation = {
-        "name": $('#nameInput').val(),
-        "phone": $('#phoneInput').val(),
-        "email": $('#emailInput').val(),
-        "UID": $('#UIDInput').val()
-        };
-        console.log(newReservation);
+        $.get('/api/reservations', function(data) {
+            let lengthOfReservations = data.length;
+            
+            // Extract form information
+            var newReservation = {
+            "name": $('#nameInput').val(),
+            "phone": $('#phoneInput').val(),
+            "email": $('#emailInput').val(),
+            "UID": $('#UIDInput').val()
+            };
 
-        $.post('/reservations', newReservation);
+            
+            $.post('/api/makeReservations', newReservation);
+    
+            $('#nameInput').val('');
+            $('#phoneInput').val('');
+            $('#emailInput').val('');
+            $('#UIDInput').val('');
+    
+            });
 
-        $('#nameInput').val('');
-        $('#phoneInput').val('');
-        $('#emailInput').val('');
-        $('#UIDInput').val('');
+
 
         });
+
         </script>
 
 

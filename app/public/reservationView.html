@@ -65,15 +65,15 @@
         var data = [{
             "name": "James Rudd",
             "email": "James.rudd@james.rudd",
-            "Phone": "1234-5678",
+            "phone": "1234-5678",
             "uID": "abc123"
         }];
 
-        $.get('/reservationView', function (data) {
+        $.get('/api/reservations', function (data) {
+            console.log(data);
             for (let i = 0; i < data.length; i++) {
                 // Init variables
                 let card = $('<div>');
-                let cardHeader = $('<div>');
                 let details = $('<ul>');
                 let name = $('<li>');
                 let phone = $('<li>');
@@ -83,12 +83,11 @@
                 // Add details from data
                 name.text('Name: ' + data[i].name);
                 phone.text('Phone: ' + data[i].phone);
-                email.text('Email: ' + data[i].name);
-                UID.text('UID: ' + data[i].phone);
+                email.text('Email: ' + data[i].email);
+                UID.text('UID: ' + data[i].uID);
 
                 // Add required Bootstrap classes
-                card.addClass('card');
-                cardHeader.addClass('card-header');
+                card.addClass('card m-4');
                 details.addClass('list-group list-group-flush');
                 name.addClass('list-group-item');
                 phone.addClass('list-group-item');
@@ -100,7 +99,6 @@
                 details.append(email);
                 details.append(UID);
 
-                card.append(cardHeader);
                 card.append(details);
 
                 $('#cardView').append(card);
