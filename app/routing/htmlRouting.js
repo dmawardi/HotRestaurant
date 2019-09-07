@@ -17,4 +17,8 @@ router.get('/reservationView', function (req, res) {
     res.sendFile(path.join(__dirname, "../public/reservationView.html"))
 });
 
+router.get('/logic.js', function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/logic.js"))
+});
+
 module.exports = router;
