@@ -12,7 +12,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
+    </script>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -60,18 +60,15 @@
         </div>
     </div>
 
+
+    <!-- API buttons -->
+    <div>
+        <p><a href='/api/reservations'>API Table link </a> |
+            <a href='/api/waitlist'>API Wait List</a></p>
+    </div>
     <script>
-
-        var data = [{
-            "name": "James Rudd",
-            "email": "James.rudd@james.rudd",
-            "phone": "1234-5678",
-            "uID": "abc123"
-        }];
-
-        $.get('/api/reservations', function (data) {
-            console.log(data);
-            for (let i = 0; i < data.length; i++) {
+        function extractAndDisplayReservations(reserveData) {
+            for (let i = 0; i < reserveData.length; i++) {
                 // Init variables
                 let card = $('<div>');
                 let details = $('<ul>');
@@ -80,11 +77,11 @@
                 let email = $('<li>');
                 let UID = $('<li>');
 
-                // Add details from data
-                name.text('Name: ' + data[i].name);
-                phone.text('Phone: ' + data[i].phone);
-                email.text('Email: ' + data[i].email);
-                UID.text('UID: ' + data[i].uID);
+                // Add details from reserveData
+                name.text('Name: ' + reserveData[i].name);
+                phone.text('Phone: ' + reserveData[i].phone);
+                email.text('Email: ' + reserveData[i].email);
+                UID.text('UID: ' + reserveData[i].uID);
 
                 // Add required Bootstrap classes
                 card.addClass('card m-4');
@@ -93,7 +90,7 @@
                 phone.addClass('list-group-item');
                 email.addClass('list-group-item');
                 UID.addClass('list-group-item');
-                
+
                 details.append(name);
                 details.append(phone);
                 details.append(email);
@@ -104,6 +101,52 @@
                 $('#cardView').append(card);
 
             }
+        };
+
+        function extractAndDisplayWait(waitData) {
+            // for (let reservation of waitData)
+
+            for (let i = 0; i < waitData.length; i++) {
+                // Init variables
+                let card = $('<div>');
+                let details = $('<ul>');
+                let name = $('<li>');
+                let phone = $('<li>');
+                let email = $('<li>');
+                let UID = $('<li>');
+
+                // Add details from waitData
+                name.text('Name: ' + waitData[i].name);
+                phone.text('Phone: ' + waitData[i].phone);
+                email.text('Email: ' + waitData[i].email);
+                UID.text('UID: ' + waitData[i].uID);
+
+                // Add required Bootstrap classes
+                card.addClass('card m-4');
+                details.addClass('list-group list-group-flush');
+                name.addClass('list-group-item');
+                phone.addClass('list-group-item');
+                email.addClass('list-group-item');
+                UID.addClass('list-group-item');
+
+                details.append(name);
+                details.append(phone);
+                details.append(email);
+                details.append(UID);
+
+                card.append(details);
+
+                $('#waitView').append(card);
+
+            }
+        }
+
+        $.get('/api/reservations', function (data) {
+            extractAndDisplayReservations(data);
+        });
+
+        $.get('/api/waitlist', function (data) {
+            extractAndDisplayWait(data);
         });
     </script>
 
