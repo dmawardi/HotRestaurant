@@ -12,13 +12,9 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-<<<<<<< Updated upstream
         </script>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    =======
-    </script>
-    >>>>>>> Stashed changes
 </head>
 
 <body>
@@ -75,6 +71,7 @@
 
         $.get('/reservationView', function (data) {
             for (let i = 0; i < data.length; i++) {
+                // Init variables
                 let card = $('<div>');
                 let cardHeader = $('<div>');
                 let details = $('<ul>');
@@ -83,8 +80,22 @@
                 let email = $('<li>');
                 let UID = $('<li>');
 
-                name.text('Name: ' + data.name);
+                // Add details from data
+                name.text('Name: '+data[i].name);
+                phone.text('Phone: '+data[i].phone);
+                email.text('Email: '+data[i].name);
+                UID.text('UID: '+data[i].phone);
+
+                // Add required Bootstrap classes
                 card.addClass('card');
+                cardHeader.addClass('card-header');
+                details.addClass('list-group list-group-flush');
+                name.addClass('list-group-item');
+                phone.addClass('list-group-item');
+                email.addClass('list-group-item');
+                UID.addClass('list-group-item');
+                
+
 
             }
         });
