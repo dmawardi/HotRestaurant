@@ -10,7 +10,7 @@ router.get('/reservations', function (req, res) {
     res.sendFile(path.join(__dirname, "../public/reservations.html"))
 });
 
-router.get('/reservationsView', function (req, res) {
+router.get('/reservationView', function (req, res) {
     res.sendFile(path.join(__dirname, "../public/reservationView.html"))
 });
 
