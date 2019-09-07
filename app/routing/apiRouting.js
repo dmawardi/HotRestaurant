@@ -1,7 +1,14 @@
-app.get('/api/reservations', function (req, res) {
+var express = require('express');
+var router = express.Router();
+var path = require('path');
+
+
+router.get('/reservations', function (req, res) {
     return res.json();
 })
 
-app.get('/api/waitlist', function (req, res) {
+router.get('/waitlist', function (req, res) {
     return res.json();
 })
+
+module.exports = router;

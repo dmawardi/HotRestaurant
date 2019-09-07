@@ -1,11 +1,17 @@
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/index.html"))
+var express = require('express');
+var router = express.Router();
+var path = require('path');
+
+router.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"))
 });
 
-app.get('/reservations', function (req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/reservations.html"))
+router.get('/reservations', function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/reservations.html"))
 });
 
-app.get('/reservationsView', function (req, res) {
-    res.sendFile(path.join(__dirname, "/app/public/reservationView.html"))
+router.get('/reservationsView', function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/reservationView.html"))
 });
+
+module.exports = router;
