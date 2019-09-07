@@ -13,6 +13,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -52,15 +55,31 @@
                         <label for="UIDInput">Unique ID</label>
                         <input type="text" class="form-control" id="UIDInput" placeholder="2345">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
+                    <button type="submit" class="btn btn-primary" id="submitReservation">Submit</button>
                 </form>
 
             </div>
         </div>
 
     </div>
-    <script
+    <script>
+    $('#submitReservation').on('click', function(event) {
+        event.preventDefault();
+
+        console.log('clicking submit');
+        
+        var newReservation = {
+            "name": $('#nameInput').val(),
+            "phone": $('#phoneInput').val(),
+            "email": $('#emailInput').val(),
+            "UID": $('#UIDInput').val()
+        };
+        console.log(newReservation);
+
+        $.post('/reservations', newReservation);
+        
+    });
+    </script>
 
 
 </body>
